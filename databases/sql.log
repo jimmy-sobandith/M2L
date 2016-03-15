@@ -347,3 +347,211 @@ CREATE TABLE ligue(
     idDiscipline INTEGER REFERENCES discipline (id) ON DELETE CASCADE  
 );
 success!
+timestamp: 2016-02-23T15:19:51.033149
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2016-02-23T15:19:51.055540
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-23T15:19:51.064130
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:19:51.073138
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-02-23T15:19:51.083953
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-23T15:19:51.093668
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-02-23T15:19:51.103013
+CREATE TABLE discipline(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    libelle CHAR(512),
+    olympique CHAR(512)
+);
+success!
+timestamp: 2016-02-23T15:19:51.112193
+CREATE TABLE ligue(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom CHAR(512),
+    adresseRue CHAR(512),
+    ville CHAR(512),
+    cp CHAR(512),
+    tel CHAR(512),
+    URLSiteWeb CHAR(512),
+    emailContact CHAR(512),
+    idDiscipline INTEGER REFERENCES discipline (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:19:51.122932
+CREATE TABLE categorie(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom CHAR(512),
+    admin_email CHAR(512),
+    heureOuverture INTEGER,
+    heureOuvertureMinutes INTEGER,
+    heureFermeture INTEGER,
+    heureFermetureMinutes INTEGER
+);
+success!
+timestamp: 2016-02-23T15:19:51.132796
+CREATE TABLE salle(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom CHAR(512),
+    capacite INTEGER,
+    disponible INTEGER,
+    categorie_id INTEGER REFERENCES categorie (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:19:51.142265
+CREATE TABLE reservation(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    etat INTEGER,
+    dateDebut TIMESTAMP,
+    dateFin TIMESTAMP,
+    salle_id INTEGER REFERENCES salle (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:40:10.665055
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512)
+);
+success!
+timestamp: 2016-02-23T15:40:10.686793
+CREATE TABLE auth_group(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-23T15:40:10.702190
+CREATE TABLE auth_membership(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:40:10.722356
+CREATE TABLE auth_permission(
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-02-23T15:40:10.739613
+CREATE TABLE auth_event(
+    id SERIAL PRIMARY KEY,
+    time_stamp TIMESTAMP,
+    client_ip VARCHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-23T15:40:10.757034
+CREATE TABLE auth_cas(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-02-23T15:40:10.773783
+CREATE TABLE discipline(
+    id SERIAL PRIMARY KEY,
+    libelle VARCHAR(512),
+    olympique VARCHAR(512)
+);
+success!
+timestamp: 2016-02-23T15:40:10.790955
+CREATE TABLE ligue(
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(512),
+    adresseRue VARCHAR(512),
+    ville VARCHAR(512),
+    cp VARCHAR(512),
+    tel VARCHAR(512),
+    URLSiteWeb VARCHAR(512),
+    emailContact VARCHAR(512),
+    idDiscipline INTEGER REFERENCES discipline (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:40:10.809111
+CREATE TABLE categorie(
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(512),
+    admin_email VARCHAR(512),
+    heureOuverture INTEGER,
+    heureOuvertureMinutes INTEGER,
+    heureFermeture INTEGER,
+    heureFermetureMinutes INTEGER
+);
+success!
+timestamp: 2016-02-23T15:40:10.825420
+CREATE TABLE salle(
+    id SERIAL PRIMARY KEY,
+    nom VARCHAR(512),
+    capacite INTEGER,
+    disponible INTEGER,
+    categorie_id INTEGER REFERENCES categorie (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-23T15:40:10.841877
+CREATE TABLE reservation(
+    id SERIAL PRIMARY KEY,
+    etat INTEGER,
+    dateDebut TIMESTAMP,
+    dateFin TIMESTAMP,
+    salle_id INTEGER REFERENCES salle (id) ON DELETE CASCADE  
+);
+success!
