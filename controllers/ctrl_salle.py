@@ -6,7 +6,7 @@ def afficherLesSalles():
     """
     Fournit à la vue HTML la liste de toutes les salles avec l'ensemble des informations
     """
-    rowsSalles =db(db.salle.categorie_id==db.categorie.id).select(db.salle.id,db.salle.nom,db.categorie.nom) #requête permettant de récupérer les informations des salles
+    rowsSalles =db(db.salle.categorie_id==db.categorie.id).select(db.salle.id,db.categorie.heureOuvertureMinutes,db.categorie.heureOuverture,db.salle.capacite,db.salle.nom,db.categorie.nom) #requête permettant de récupérer les informations des salles
 
     return locals()
 
