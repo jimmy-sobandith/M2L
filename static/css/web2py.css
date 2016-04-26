@@ -134,6 +134,7 @@ div.error {
     padding:10px 0;
     width:100%;
     color:#959595;
+    /*color:#FFFFFF;*/
     vertical-align:middle;
     padding:auto;
     background-image:-khtml-gradient(linear,left top,left bottom,from(#333333),to(#222222));
@@ -195,7 +196,7 @@ div.error {
 .web2py_grid tr.odd {background-color:#F9F9F9}
 .web2py_grid tr:hover {background-color:#F5F5F5}
 
-/*
+
 .web2py_breadcrumbs a {
     line-height:20px; margin-right:5px; display:inline-block;
     padding:3px 5px 3px 5px;
@@ -209,7 +210,7 @@ div.error {
     -webkit-background-clip:padding-box; border-radius:2px;
     outline:none; position:relative; zoom:1; *display:inline;
 }
-*/
+
 
 .web2py_console form {
     width: 100%;
